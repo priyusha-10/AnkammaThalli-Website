@@ -1,0 +1,29 @@
+/* public/assets/css/theme.css */
+
+:root {
+    /* Color Palette - Devotional/Warm */
+    --color-primary: #D35400; /* Saffron/Deep Orange */
+    --color-primary-dark: #A04000;
+    --color-secondary: #8E44AD; /* Deep Purple/Maroon-like */
+    --color-accent: #F1C40F; /* Gold */
+    --color-text-main: #2C3E50;
+    --color-text-light: #7F8C8D;
+    --color-bg-body: #FDFBF7; /* Warm Off-white */
+    --color-bg-footer: #2C3E50;
+    --color-white: #FFFFFF;
+
+    /* Spacing Scale */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-heading: 'Georgia', serif; /* Traditional feel */
+    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Global Layout */
+    --container-width: 1200px;
+    --header-height: 80px;
+}

@@ -1,0 +1,39 @@
+/* public/assets/css/pages/donations.css */
+
+.donations-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.donation-card {
+    background: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-left: 5px solid var(--color-primary);
+}
+
+.donation-card h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.bank-details {
+    background-color: var(--color-bg-body);
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    font-family: monospace;
+    margin-top: var(--spacing-md);
+    white-space: pre-wrap; /* Maintain formatting of bank details */
+}
+
+.offline-notice {
+    background-color: #e8f8f5;
+    border: 1px solid #a2d9ce;
+    color: #0e6655;
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}

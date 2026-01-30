@@ -1,0 +1,81 @@
+/* public/assets/css/layout.css */
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Header */
+.site-header {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+}
+
+/* Navigation - Basic for Phase 1 */
+.main-nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.main-nav a {
+    color: var(--color-text-main);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--color-bg-footer);
+    color: var(--color-white);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-xl);
+}
+
+.site-footer p {
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Mobile Responsive - Basic */
+@media (max-width: 768px) {
+    .site-header {
+        height: auto;
+        padding: var(--spacing-md) 0;
+    }
+    
+    .site-header .container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
