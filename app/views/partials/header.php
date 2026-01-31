@@ -16,18 +16,30 @@ $currentPage = $_GET['page'] ?? 'home';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AnkammaThalli Temple</title>
     
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/theme.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/layout.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <!-- CSS Assets with Cache Busting -->
+    <link rel="stylesheet" href="assets/css/theme.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/base.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/layout.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/components.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/pages/home.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
 <header class="site-header">
+    <div class="flame-particles">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+        <div class="particle p6"></div>
+    </div>
+    <div class="om-watermark">ॐ</div>
     <div class="container">
         <div class="logo">
-            <a href="index.php">AnkammaThalli Temple</a>
+            <a href="index.php">
+                <img src="assets/images/transparent-logo.png" alt="AnkammaThalli Temple Logo">
+            </a>
         </div>
         
         <nav class="main-nav">

@@ -3,61 +3,84 @@
 ?>
 <link rel="stylesheet" href="assets/css/pages/home.css">
 
-<!-- Hero / Welcome Section -->
+<!-- Hero / Welcome Section (Golden Mandir Saffron Theme) -->
 <section class="hero-section">
-    <h1 class="hero-title">Welcome to AnkammaThalli Temple</h1>
-    <p class="lead"><?= htmlspecialchars($welcomeMsg['content_text'] ?? 'Experience peace and devotion.') ?></p>
-    <div style="margin-top: 2rem;">
-        <a href="index.php?page=donations" class="btn btn-primary">Donate Now</a>
+    <div class="divine-overlay-pattern"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Welcome to AnkammaThalli Temple</h1>
+        <p class="lead">A sacred space of devotion, protection, and blessings.</p>
+        <p class="lead" style="font-size: 1.1rem; margin-top: 0.5rem; max-width: 900px;">
+            Experience the divine grace of Amma AnkammaThalli, seek inner peace, and offer your prayers for the well-being of your family and community.
+        </p>
+        
+        <!-- Primary CTA moved back to Hero -->
+        <div style="margin-top: 2rem;">
+            <a href="index.php?page=donations" class="btn btn-primary btn-lg">Donate Now</a>
+        </div>
     </div>
 </section>
 
-<!-- Upcoming Events Section -->
-<section class="container" style="margin-bottom: 4rem;">
-    <h2 class="section-title">Upcoming Events</h2>
-    
-    <?php if (!empty($upcomingEvents)): ?>
-        <div class="events-grid">
-            <?php foreach ($upcomingEvents as $event): ?>
-                <div class="card">
-                    <h3><?= htmlspecialchars($event['title']) ?></h3>
-                    <p class="text-muted"><?= date('F j, Y, g:i a', strtotime($event['event_date'])) ?></p>
-                    <p><?= htmlspecialchars(substr($event['description'], 0, 100)) ?>...</p>
-                    <a href="index.php?page=events" class="btn btn-outline" style="margin-top: 1rem; font-size: 0.9rem;">Details</a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div style="text-align: center;">
-            <a href="index.php?page=events" class="btn btn-secondary">View All Events</a>
-        </div>
-    <?php else: ?>
-        <p style="text-align: center;">No upcoming events at the moment.</p>
-    <?php endif; ?>
-</section>
+<!-- The Sacred Grid (3 Cards in Row) -->
+<section class="sacred-grid-container container">
+    <div class="divine-grid">
+        
+        <!-- Card 1: About Us -->
+        <article class="divine-card history-card">
+            <div class="card-header">
+                <h2>About Us</h2>
+            </div>
+            <div class="card-body">
+                <p class="history-snippet">Discover the rich history and spiritual significance of the AnkammaThalli Temple. A place where tradition meets tranquility.</p>
+            </div>
+            <div class="card-footer">
+                <a href="index.php?page=about" class="btn btn-outline btn-sm">Read Full Story</a>
+            </div>
+        </article>
 
-<!-- Gallery Preview Section -->
-<section class="container" style="margin-bottom: 4rem;">
-    <h2 class="section-title">Temple Highlights</h2>
-    <?php if (!empty($recentImages)): ?>
-        <div class="gallery-strip">
-            <?php foreach ($recentImages as $img): ?>
-                <img src="<?= htmlspecialchars($img['image_url']) ?>" alt="<?= htmlspecialchars($img['title']) ?>">
-            <?php endforeach; ?>
-        </div>
-        <div style="text-align: center; margin-top: 1rem;">
-            <a href="index.php?page=gallery" class="btn btn-secondary">View Gallery</a>
-        </div>
-    <?php else: ?>
-        <p style="text-align: center;">Gallery images coming soon.</p>
-    <?php endif; ?>
-</section>
+        <!-- Card 2: Temple Highlights (Gallery) -->
+        <article class="divine-card gallery-card">
+            <div class="card-header">
+                <h2>Temple Highlights</h2>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($recentImages)): ?>
+                    <div class="mini-gallery-grid">
+                        <?php foreach (array_slice($recentImages, 0, 4) as $img): ?>
+                            <img src="<?= htmlspecialchars($img['image_url']) ?>" alt="Gallery Thumb">
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="empty-state">Gallery images coming soon.</p>
+                <?php endif; ?>
+            </div>
+            <div class="card-footer">
+                <a href="index.php?page=gallery" class="btn btn-outline btn-sm">View Gallery</a>
+            </div>
+        </article>
 
-<!-- About Teaser -->
-<section class="container" style="display: flex; gap: 2rem; align-items: center; background: #fff; padding: 2rem; border-radius: 8px;">
-    <div style="flex: 1;">
-        <h2>Our History</h2>
-        <p>Discover the rich history and spiritual significance of the AnkammaThalli Temple. A place where tradition meets tranquility.</p>
-        <a href="index.php?page=about" class="btn btn-outline" style="margin-top: 1rem;">Read More</a>
+        <!-- Card 3: Upcoming Events -->
+        <article class="divine-card events-card">
+            <div class="card-header">
+                <h2>Upcoming Events</h2>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($upcomingEvents)): ?>
+                    <div class="mini-events-list">
+                        <?php foreach (array_slice($upcomingEvents, 0, 2) as $event): ?>
+                            <div class="mini-event-item">
+                                <strong><?= htmlspecialchars($event['title']) ?></strong>
+                                <span class="event-date"><?= date('M j', strtotime($event['start_date'])) ?></span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php else: ?>
+                    <p class="empty-state">No upcoming events scheduled.</p>
+                <?php endif; ?>
+            </div>
+            <div class="card-footer">
+                <a href="index.php?page=events" class="btn btn-outline btn-sm">View All Events</a>
+            </div>
+        </article>
+
     </div>
-    <!-- Placeholder for an image if needed -->
 </section>

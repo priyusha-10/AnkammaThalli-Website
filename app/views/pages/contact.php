@@ -17,6 +17,13 @@
             <div class="info-item">
                 <strong>Address:</strong>
                 <p><?= htmlspecialchars($settings['temple_address'] ?? 'Address not available') ?></p>
+                <?php if (!empty($settings['map_link'])): ?>
+                    <p style="margin-top: 8px;">
+                        <a href="<?= htmlspecialchars($settings['map_link']) ?>" target="_blank" class="btn-map">
+                            <span>📍</span> Get Directions
+                        </a>
+                    </p>
+                <?php endif; ?>
             </div>
             
             <div class="info-item">
@@ -41,7 +48,10 @@
                         <a href="<?= htmlspecialchars($settings['social_facebook']) ?>" target="_blank">Facebook</a> | 
                     <?php endif; ?>
                     <?php if (!empty($settings['social_instagram'])): ?>
-                        <a href="<?= htmlspecialchars($settings['social_instagram']) ?>" target="_blank">Instagram</a>
+                        <a href="<?= htmlspecialchars($settings['social_instagram']) ?>" target="_blank">Instagram</a> | 
+                    <?php endif; ?>
+                    <?php if (!empty($settings['social_whatsapp'])): ?>
+                        <a href="<?= htmlspecialchars($settings['social_whatsapp']) ?>" target="_blank">WhatsApp</a>
                     <?php endif; ?>
                 </p>
             </div>
@@ -87,11 +97,5 @@
                 <button type="submit" class="btn btn-primary">Send Message</button>
             </form>
         </div>
-    </div>
-
-    <!-- Map Section -->
-    <div class="map-container">
-        <!-- Placeholder for Google Map Embed -->
-        <p>Google Maps Embed will go here. (Update 'map_embed_url' in site_settings)</p>
     </div>
 </div>

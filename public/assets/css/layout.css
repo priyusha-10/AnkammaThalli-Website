@@ -6,60 +6,317 @@
     padding: 0 var(--spacing-md);
 }
 
-/* Header */
+/* Header: Aarti Flame Premium Design */
 .site-header {
-    background-color: var(--color-white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: linear-gradient(to bottom, var(--color-header-bg-start), var(--color-header-bg-end));
+    box-shadow: 0 4px 20px rgba(135, 54, 0, 0.3);
     height: var(--header-height);
     display: flex;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
 }
 
+/* 1. OM WATERMARK REFINEMENT */
+.om-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20rem; /* Adjusted for better fit */
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 215, 0, 0.1); /* Gold outline */
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    animation: omPulse 8s infinite ease-in-out;
+}
+
+@keyframes omPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.15; }
+}
+
+/* 2. FLAME PARTICLES UPGRADE */
+.flame-particles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    bottom: -20px;
+    background: radial-gradient(circle, var(--color-flame-2), transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    animation: rise var(--duration) infinite ease-out var(--delay);
+}
+
+/* Individual Particle Customization */
+.p1 { left: 10%; width: 10px; height: 10px; --duration: 4s; --delay: 0s; background: var(--color-flame-1); }
+.p2 { left: 30%; width: 15px; height: 15px; --duration: 6s; --delay: 2s; background: var(--color-flame-2); }
+.p3 { left: 50%; width: 8px; height: 8px;  --duration: 5s; --delay: 1s; background: var(--color-accent); }
+.p4 { left: 70%; width: 12px; height: 12px; --duration: 7s; --delay: 3s; background: var(--color-flame-1); }
+.p5 { left: 20%; width: 6px; height: 6px;  --duration: 3s; --delay: 1.5s; background: var(--color-flame-2); }
+.p6 { left: 80%; width: 14px; height: 14px; --duration: 5.5s; --delay: 0.5s; background: var(--color-primary); }
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.2; }
+    100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+}
+
+/* Container Z-Index & Layout */
 .site-header .container {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 100%; /* Ensure it fills the header height */
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-primary-dark);
+/* 3. ENHANCED LOGO GLOW */
+.logo img {
+    height: 80px;
+    width: auto;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 5px rgba(211, 84, 0, 0.5));
+    animation: logoBreathe 4s infinite ease-in-out;
 }
 
-/* Navigation - Basic for Phase 1 */
+.logo img:hover {
+    transform: scale(1.05); /* JS/Hover trigger specific expansion */
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    animation: none; /* Pause breathing on hover for direct feedback */
+}
+
+@keyframes logoBreathe {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(211, 84, 0, 0.5)); }
+    50% { transform: scale(1.02); filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.6)); }
+}
+
+/* Navigation - Divine Gold */
 .main-nav ul {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
+/* 4. PREMIUM HOVER EFFECT (Text Glow - No Button Background) */
 .main-nav a {
-    color: var(--color-text-main);
-    font-weight: 500;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--color-colorado-gold); /* Gold Text */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem; /* Slightly larger for elders */
+    padding: var(--spacing-sm);
+    position: relative;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
 }
 
-.main-nav a.active,
+/* The Line - Gold Pulse */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0%;
+    height: 3px; /* More visible underline */
+    background: var(--color-colorado-gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--color-tree-poppy);
+}
+
+/* The Glitter (Pseudo-Sparkles) */
+.main-nav a::before {
+    content: '✦';
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    color: var(--color-accent);
+    font-size: 12px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: translateY(10px);
+}
+
 .main-nav a:hover {
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-accent);
+    color: var(--color-white); /* White text on dark header = Max Contrast */
+    text-shadow: 0 0 10px rgba(255, 202, 50, 0.8); /* Gold Glow */
+    background-color: transparent; /* No button background */
+    transform: translateY(-2px);
 }
 
-/* Footer */
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.main-nav a:hover::before {
+    opacity: 1;
+    transform: translateY(0) rotate(180deg);
+}
+
+.main-nav a.active {
+    color: var(--color-white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .site-header {
+        height: auto;
+        padding: var(--spacing-md) 0;
+    }
+    
+    .om-watermark {
+        font-size: 10rem;
+    }
+    
+    .logo img {
+        height: 60px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Footer - Divine 3-Column Layout */
 .site-footer {
     background-color: var(--color-bg-footer);
     color: var(--color-white);
     padding: var(--spacing-xl) 0;
-    margin-top: var(--spacing-xl);
+    margin-top: 5rem; /* Space from content */
+    border-top: 5px solid var(--color-colorado-gold);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    text-align: left;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-heading {
+    color: var(--color-colorado-gold);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 202, 50, 0.3);
+    padding-bottom: var(--spacing-sm);
+    display: inline-block;
 }
 
 .site-footer p {
-    text-align: center;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Map Styling */
+.map-container iframe {
+    border-radius: 8px;
+    border: 2px solid var(--color-colorado-gold) !important;
     opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.map-container iframe:hover {
+    opacity: 1;
+}
+
+/* Timings List */
+.timings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timings-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+
+.timings-list strong {
+    color: var(--color-tree-poppy);
+}
+
+.special-pooja {
+    font-size: 0.9rem;
+    color: var(--color-colorado-gold);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+    display: block !important;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.social-icon {
+    color: var(--color-white);
+    text-decoration: none;
+    border: 1px solid var(--color-colorado-gold);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background: var(--color-colorado-gold);
+    color: var(--color-bg-footer);
+}
+
+.copyright-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: var(--spacing-lg);
+}
+
+.footer-tiny-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0.8;
+}
+
+.copyright.small {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    margin: 0;
+    padding: 0;
 }
 
 /* Mobile Responsive - Basic */
@@ -76,6 +333,10 @@
     
     .main-nav ul {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .copyright-row {
         justify-content: center;
     }
 }

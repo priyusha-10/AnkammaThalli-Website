@@ -3,9 +3,10 @@
 START TRANSACTION;
 
 -- Using .jpeg as fixed
-INSERT INTO `events` (`title`, `description`, `event_date`, `status`, `image_url`) VALUES
-('Daily Morning Abhishekam', 'Ritual bathing of the deity to start the day with purity.', '2026-03-01 06:00:00', 'ongoing', 'assets/images/event1.jpeg'),
-('Ugadi Celebrations', 'Telugu New Year celebrations with special pooja.', '2026-03-22 08:00:00', 'upcoming', 'assets/images/event2.jpeg'),
-('Temple Anniversary', 'Celebrating 50 years of devotion.', '2025-12-15 10:00:00', 'past', 'assets/images/event1.jpeg');
+INSERT INTO `events` (`title`, `description`, `start_date`, `end_date`, `location`, `type`, `status`, `image_url`) VALUES
+('Morning Abhishekam', 'Ritual bathing of the deity.', DATE_SUB(NOW(), INTERVAL 1 HOUR), DATE_ADD(NOW(), INTERVAL 2 HOUR), 'Main Sanctum', 'pooja', 'ongoing', 'assets/images/Morning_Pooja_Evening_Aarti/gallery7.jpeg'),
+('Ugadi Celebrations', 'Telugu New Year celebrations.', DATE_ADD(NOW(), INTERVAL 5 DAY), DATE_ADD(NOW(), INTERVAL 5 DAY), 'Outdoor Mandap', 'festival', 'upcoming', 'assets/images/Festival_Celebrations/gallery7.jpeg'),
+('Daily Evening Aarti', 'Sacred lamp offering.', DATE_SUB(NOW(), INTERVAL 30 MINUTE), DATE_ADD(NOW(), INTERVAL 1 HOUR), 'Main Hall', 'pooja', 'ongoing', 'assets/images/Morning_Pooja_Evening_Aarti/gallery8.jpeg'),
+('Maha Yagnam', 'Sacred fire ritual.', DATE_ADD(NOW(), INTERVAL 10 DAY), DATE_ADD(NOW(), INTERVAL 11 DAY), 'Yagashala', 'homam', 'upcoming', 'assets/images/Yagnas_Homams/gallery6.jpeg');
 
 COMMIT;

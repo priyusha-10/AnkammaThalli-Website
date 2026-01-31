@@ -1,15 +1,35 @@
 /* public/assets/css/theme.css */
 
+/* Import Google Fonts: Noto Sans Devanagari & Cinzel (Elegant Serif) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap');
+
 :root {
-    /* Color Palette - Devotional/Warm */
-    --color-primary: #D35400; /* Saffron/Deep Orange */
-    --color-primary-dark: #A04000;
-    --color-secondary: #8E44AD; /* Deep Purple/Maroon-like */
-    --color-accent: #F1C40F; /* Gold */
+    /* Color Palette - Official Guide (PDF) */
+    --color-rust-red: #C83A00;
+    --color-tree-poppy: #FB9C1B; /* Orange */
+    --color-colorado-gold: #FFCA32;
+    --color-fashion-turquoise: #58BABD;
+    --color-paradiso: #39807F; /* Deep Teal */
+
+    /* Mapped Semantic Colors */
+    --color-primary: var(--color-rust-red);
+    --color-primary-dark: #8B2900; /* Darker shade of Rust Red */
+    --color-secondary: var(--color-paradiso);
+    --color-accent: var(--color-colorado-gold);
+    --color-flame-1: var(--color-tree-poppy);
+    --color-flame-2: var(--color-colorado-gold);
+
     --color-text-main: #2C3E50;
     --color-text-light: #7F8C8D;
+    
+    /* Header Specific */
+    --color-header-bg-start: var(--color-tree-poppy); /* Bright Saffron/Orange */
+    --color-header-bg-end: var(--color-rust-red); /* Deep Rust Red */
+    --color-menu-text: var(--color-colorado-gold);
+    --color-menu-hover: var(--color-white);
+
     --color-bg-body: #FDFBF7; /* Warm Off-white */
-    --color-bg-footer: #2C3E50;
+    --color-bg-footer: #1A1A1A;
     --color-white: #FFFFFF;
 
     /* Spacing Scale */
@@ -20,10 +40,10 @@
     --spacing-xl: 4rem;
 
     /* Typography */
-    --font-heading: 'Georgia', serif; /* Traditional feel */
-    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Cinzel', serif; /* Elegant, divine serif */
+    --font-body: 'Noto Sans Devanagari', sans-serif; /* Clean, readable */
     
     /* Global Layout */
     --container-width: 1200px;
-    --header-height: 80px;
+    --header-height: 100px; /* Increased for grandeur */
 }

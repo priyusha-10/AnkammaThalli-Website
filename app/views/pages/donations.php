@@ -29,7 +29,5 @@
         <p>No donation information available at the moment. Please contact the temple office.</p>
     <?php endif; ?>
 
-    <div style="margin-top: 3rem; text-align: center;">
-        <p>Have questions? <a href="index.php?page=contact">Contact Us</a></p>
-    </div>
+
 </div>

@@ -97,6 +97,33 @@
     color: #777;
 }
 
+/* Map Button */
+.btn-map {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f0f7ff;
+    color: var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--color-primary);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-map:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-map span {
+    font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
