@@ -1,47 +1,57 @@
 /* public/assets/css/pages/home.css */
 
-/* --- 1. Golden Mandir Hero Section --- */
+/* Home Page Specific Background */
+body.page-home {
+    /* Minimal overlay (0.1) for maximum visual impact */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), 
+                      url('../../images/background-images/background-image-3.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Hero Section */
 .hero-section {
     position: relative;
     text-align: center;
     padding-top: var(--spacing-xl);
     padding-bottom: 8rem; /* Extra space for floating grid */
-    background: linear-gradient(180deg, var(--color-tree-poppy) 0%, var(--color-rust-red) 100%);
-    color: var(--color-white);
+    background: transparent !important; /* Force removal */
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: var(--color-text-main); /* Match header dark text */
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    border-bottom: 4px solid var(--color-colorado-gold);
 }
 
 .divine-overlay-pattern {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle, transparent 20%, var(--color-rust-red) 21%, transparent 22%); /* Simple Mandala ripple */
-    background-size: 60px 60px;
-    opacity: 0.05;
-    pointer-events: none;
+    display: none !important;
 }
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
-    color: var(--color-white);
+    font-size: 3.8rem;
+    color: #DB5C00 !important; /* User requested Deep Orange for comparison */
     margin-bottom: var(--spacing-md);
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     position: relative;
     z-index: 2;
+    letter-spacing: 1px;
 }
 
 .hero-section .lead {
+    font-family: var(--font-body); /* Normal case (Sans-serif) */
     font-size: 1.25rem;
     max-width: 800px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    color: var(--color-text-main); /* Inherit global #840B05 */
+    font-weight: 500; 
+    text-shadow: none;
+    line-height: 1.8;
 }
 
 .hero-scroll-indicator {
@@ -73,7 +83,7 @@
 
 /* --- 3. Divine Tablet (Card) Styling --- */
 .divine-card {
-    background: var(--color-white);
+    background: rgba(255, 255, 255, 0.85); /* More transparent to show background */
     border: none; /* No full border */
     border-top: 5px solid var(--color-tree-poppy); /* Vibrant Saffron Top Accent */
     border-radius: 8px;
@@ -172,7 +182,9 @@
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Smaller font for mobile */
+        word-wrap: break-word; /* Prevent overflow */
+        padding: 0 10px;
     }
     
     .sacred-grid-container {

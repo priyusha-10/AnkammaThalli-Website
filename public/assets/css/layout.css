@@ -6,161 +6,187 @@
     padding: 0 var(--spacing-md);
 }
 
-/* Header: Aarti Flame Premium Design */
+/* Top Bar */
+.top-bar {
+    background-color: var(--color-bg-footer); /* Dark bg */
+    color: #fff;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-contact {
+    display: flex;
+    gap: 20px;
+}
+
+.top-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Increased gap slightly for SVGs */
+    opacity: 0.9;
+    color: #fff; /* White initially */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.top-contact a:hover {
+    opacity: 1;
+    color: var(--color-primary); /* Golden Orange on Hover */
+    transform: translateY(-1px);
+}
+
+.top-contact a svg {
+    fill: currentColor; /* Follow text color on hover */
+}
+
+.top-social {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.top-social a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.top-social a:hover {
+    opacity: 1;
+    color: var(--color-colorado-gold);
+}
+
+.online-status {
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin-right: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* Main Header - Floating Card Style */
 .site-header {
-    background: linear-gradient(to bottom, var(--color-header-bg-start), var(--color-header-bg-end));
-    box-shadow: 0 4px 20px rgba(135, 54, 0, 0.3);
-    height: var(--header-height);
+    background-color: var(--color-white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: 70px;
     display: flex;
     align-items: center;
     position: sticky;
-    top: 0;
+    top: 20px; /* Floating effect: Sticks 20px from top */
     z-index: 1000;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-/* 1. OM WATERMARK REFINEMENT */
-.om-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20rem; /* Adjusted for better fit */
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 215, 0, 0.1); /* Gold outline */
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 0;
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    animation: omPulse 8s infinite ease-in-out;
-}
-
-@keyframes omPulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.15; }
-}
-
-/* 2. FLAME PARTICLES UPGRADE */
-.flame-particles {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    border-bottom: none;
+    transition: all 0.3s ease;
+    
+    /* Boxed Layout Changes */
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
+    max-width: 1100px; /* Reduced slightly from 1200px */
+    margin: 20px auto 0; /* Centered with 20px top margin */
+    border-radius: 8px; /* Fully rounded corners for floating card */
 }
 
-.particle {
-    position: absolute;
-    bottom: -20px;
-    background: radial-gradient(circle, var(--color-flame-2), transparent 70%);
-    border-radius: 50%;
-    opacity: 0;
-    animation: rise var(--duration) infinite ease-out var(--delay);
-}
-
-/* Individual Particle Customization */
-.p1 { left: 10%; width: 10px; height: 10px; --duration: 4s; --delay: 0s; background: var(--color-flame-1); }
-.p2 { left: 30%; width: 15px; height: 15px; --duration: 6s; --delay: 2s; background: var(--color-flame-2); }
-.p3 { left: 50%; width: 8px; height: 8px;  --duration: 5s; --delay: 1s; background: var(--color-accent); }
-.p4 { left: 70%; width: 12px; height: 12px; --duration: 7s; --delay: 3s; background: var(--color-flame-1); }
-.p5 { left: 20%; width: 6px; height: 6px;  --duration: 3s; --delay: 1.5s; background: var(--color-flame-2); }
-.p6 { left: 80%; width: 14px; height: 14px; --duration: 5.5s; --delay: 0.5s; background: var(--color-primary); }
-
-@keyframes rise {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    20% { opacity: 0.6; }
-    80% { opacity: 0.2; }
-    100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
-}
-
-/* Container Z-Index & Layout */
 .site-header .container {
-    position: relative;
-    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%; /* Ensure it fills the header height */
 }
 
-/* 3. ENHANCED LOGO GLOW */
+/* Logo */
 .logo img {
-    height: 80px;
+    height: 40px; /* Reduced from 70px */
     width: auto;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 0 5px rgba(211, 84, 0, 0.5));
-    animation: logoBreathe 4s infinite ease-in-out;
+    transition: transform 0.3s ease;
 }
 
 .logo img:hover {
-    transform: scale(1.05); /* JS/Hover trigger specific expansion */
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
-    animation: none; /* Pause breathing on hover for direct feedback */
+    transform: scale(1.05);
 }
 
-@keyframes logoBreathe {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(211, 84, 0, 0.5)); }
-    50% { transform: scale(1.02); filter: drop-shadow(0 0 12px rgba(255, 165, 0, 0.6)); }
+/* Menu Toggle (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
 }
 
-/* Navigation - Divine Gold */
+/* Navigation - Centered & Clean */
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
 .main-nav ul {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
+} 
+
+.top-social {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
-/* 4. PREMIUM HOVER EFFECT (Text Glow - No Button Background) */
+.top-social a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.top-social a svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.top-social a:hover {
+    opacity: 1;
+    color: var(--color-primary); /* Use global variable */
+    transform: translateY(-2px);
+}
+
 .main-nav a {
-    color: var(--color-colorado-gold); /* Gold Text */
+    color: var(--color-primary); /* #FCAA00 */
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.15rem; /* Slightly larger for elders */
-    padding: var(--spacing-sm);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 10px 0;
     position: relative;
-    letter-spacing: 0.5px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-/* The Line - Gold Pulse */
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--color-primary-dark); /* #DB5C00 */
+}
+
+/* Underline Animation (Center Out) */
 .main-nav a::after {
     content: '';
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     left: 50%;
     width: 0%;
-    height: 3px; /* More visible underline */
-    background: var(--color-colorado-gold);
+    height: 2px;
+    background: var(--color-primary-dark); /* Match active color */
     transition: all 0.3s ease;
     transform: translateX(-50%);
-    box-shadow: 0 0 8px var(--color-tree-poppy);
-}
-
-/* The Glitter (Pseudo-Sparkles) */
-.main-nav a::before {
-    content: '✦';
-    position: absolute;
-    top: -5px;
-    right: 5px;
-    color: var(--color-accent);
-    font-size: 12px;
-    opacity: 0;
-    transition: all 0.4s ease;
-    transform: translateY(10px);
-}
-
-.main-nav a:hover {
-    color: var(--color-white); /* White text on dark header = Max Contrast */
-    text-shadow: 0 0 10px rgba(255, 202, 50, 0.8); /* Gold Glow */
-    background-color: transparent; /* No button background */
-    transform: translateY(-2px);
 }
 
 .main-nav a:hover::after,
@@ -168,36 +194,163 @@
     width: 100%;
 }
 
-.main-nav a:hover::before {
-    opacity: 1;
-    transform: translateY(0) rotate(180deg);
+/* Utilities (Right) */
+.header-utilities {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.main-nav a.active {
-    color: var(--color-white);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-main);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 50%;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+.search-btn:hover {
+    color: var(--color-primary);
+    background-color: rgba(0,0,0,0.05); /* Subtle background circle on hover */
+    transform: scale(1.1);
+}
+
+/* SVG Size for Search */
+.search-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Intermediate Desktop (Compact Desktop) */
+@media (max-width: 1200px) {
+    .main-nav ul {
+        gap: 1rem; /* Reduce gap to fit menu on smaller desktops */
+    }
+    .main-nav a {
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
     .site-header {
-        height: auto;
-        padding: var(--spacing-md) 0;
+        max-width: 95%; /* Use more width */
+    }
+}
+
+/* Mobile Responsiveness & Breakpoints */
+@media (max-width: 992px) { /* Trigger Hamburger at typical "Tablet" size */
+    .top-bar {
+        display: none; 
+    }
+
+    .site-header {
+        height: 60px; /* Force compact height on mobile */
+        padding: 0;
+        max-width: 96%; 
+        margin: 10px auto; 
     }
     
-    .om-watermark {
-        font-size: 10rem;
+    .site-header .container {
+        display: flex; /* Ensure Flexbox */
+        flex-direction: row; /* Horizontal Layout for Logo & Burger */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        height: 100%;
     }
-    
+
+    /* Logo adjustment */
     .logo img {
-        height: 60px;
+        height: 35px;
+        margin-top: 5px; 
+    }
+
+    /* Hamburger Menu Button */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-primary);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation to X */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Hide Search on Mobile Header */
+    .header-utilities {
+        display: none; 
+    }
+
+    /* Mobile Navigation Drawer */
+    .main-nav {
+        display: none; 
+        position: absolute; 
+        top: 60px; /* Directly below header */
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.98);
+        border-radius: 0 0 8px 8px; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 2.5rem 0 1rem; /* Increased top padding to clear the Close Icon area visually if needed */
+        z-index: 1000; /* Ensure it's on top of page content but check relative to X */
+    }
+
+    .main-nav.active {
+        display: block; 
+        animation: slideDown 0.3s ease-out forwards;
     }
 
     .main-nav ul {
         flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-sm);
+        gap: 0;
+        text-align: center;
     }
+
+    .main-nav li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px 0;
+        font-size: 1.1rem;
+    }
+    
+    .main-nav a::after {
+        display: none; 
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Footer - Divine 3-Column Layout */
@@ -319,24 +472,4 @@
     padding: 0;
 }
 
-/* Mobile Responsive - Basic */
-@media (max-width: 768px) {
-    .site-header {
-        height: auto;
-        padding: var(--spacing-md) 0;
-    }
-    
-    .site-header .container {
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-    
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .copyright-row {
-        justify-content: center;
-    }
-}
+/* Cleaned up duplicate media query */

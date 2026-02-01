@@ -5,21 +5,22 @@
 
 :root {
     /* Color Palette - Official Guide (PDF) */
-    --color-rust-red: #C83A00;
-    --color-tree-poppy: #FB9C1B; /* Orange */
-    --color-colorado-gold: #FFCA32;
+    /* Color Palette - Official Guide (PDF) */
+    --color-rust-red: #DB5C00; /* Updated to Deep Orange (Active State) */
+    --color-tree-poppy: #EC8600; /* Intermediate Orange */
+    --color-colorado-gold: #FCAA00; /* Updated to Golden (Base State) */
     --color-fashion-turquoise: #58BABD;
     --color-paradiso: #39807F; /* Deep Teal */
 
     /* Mapped Semantic Colors */
-    --color-primary: var(--color-rust-red);
-    --color-primary-dark: #8B2900; /* Darker shade of Rust Red */
+    --color-primary: var(--color-colorado-gold); /* Base Interactive Color (#FCAA00) */
+    --color-primary-dark: var(--color-rust-red); /* Active/Hover Color (#DB5C00) */
     --color-secondary: var(--color-paradiso);
     --color-accent: var(--color-colorado-gold);
     --color-flame-1: var(--color-tree-poppy);
     --color-flame-2: var(--color-colorado-gold);
 
-    --color-text-main: #2C3E50;
+    --color-text-main: #840B05; /* User requested Dark Red for Body Text */
     --color-text-light: #7F8C8D;
     
     /* Header Specific */
