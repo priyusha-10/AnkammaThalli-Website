@@ -32,8 +32,8 @@ body.page-home {
 
 .hero-title {
     font-family: var(--font-heading);
-    font-size: 3.8rem;
-    color: #DB5C00 !important; /* User requested Deep Orange for comparison */
+    font-size: 2.8rem; /* Reduced from 3.8rem */
+    color: #DB5C00 !important; 
     margin-bottom: var(--spacing-md);
     text-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     position: relative;
@@ -42,13 +42,13 @@ body.page-home {
 }
 
 .hero-section .lead {
-    font-family: var(--font-body); /* Normal case (Sans-serif) */
-    font-size: 1.25rem;
+    font-family: var(--font-body); 
+    font-size: 1.1rem; /* Reduced from 1.25rem */
     max-width: 800px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    color: var(--color-text-main); /* Inherit global #840B05 */
+    color: var(--color-text-main); 
     font-weight: 500; 
     text-shadow: none;
     line-height: 1.8;
@@ -82,70 +82,103 @@ body.page-home {
 }
 
 /* --- 3. Divine Tablet (Card) Styling --- */
+/* --- 3. Divine Tablet (Card) Styling --- */
 .divine-card {
-    background: rgba(255, 255, 255, 0.85); /* More transparent to show background */
-    border: none; /* No full border */
-    border-top: 5px solid var(--color-tree-poppy); /* Vibrant Saffron Top Accent */
-    border-radius: 8px;
-    padding: var(--spacing-lg);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Soft shadow */
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque for clean look */
+    border: 3px solid var(--color-colorado-gold); /* Full gold border */
+    border-radius: 50%; /* Make it circular */
+    aspect-ratio: 1 / 1; /* Force perfect circle */
+    width: 100%;
+    max-width: 320px; /* Adjusted to 320px as requested */
+    margin: 0 auto; /* Center in grid column */
+    
+    padding: var(--spacing-md); /* Reduced padding for smaller size */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
     position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible; /* Allow connectors to show */
+    
+    /* Centering Content */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    z-index: 1; /* Ensure cards are above connectors if needed */
 }
 
 .divine-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-    border-top-color: var(--color-rust-red); /* Darker red on hover */
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* Om Watermark - Made subtler */
-.divine-card::before {
-    content: 'ॐ';
+/* Distinct Card Colors */
+/* Cleaned up: All cards now use default gold border */
+
+/* Connector Arrows (Desktop Only) */
+/* Connector Arrows Removed */
+
+/* Om Watermark */
+.divine-card .watermark {
     position: absolute;
-    bottom: -10px;
-    right: -10px;
-    font-size: 8rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10rem;
     color: var(--color-colorado-gold);
-    opacity: 0.1; /* Slightly more visible on clean white */
+    opacity: 0.1; 
     pointer-events: none;
     font-family: 'Noto Sans Devanagari', sans-serif;
     line-height: 1;
+    z-index: -1;
 }
 
+/* Card Header - Centered & Clean */
 /* Card Header - Centered & Clean */
 .card-header h2 {
     color: var(--color-rust-red);
     font-family: var(--font-heading);
-    font-size: 1.6rem;
-    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem; /* Increased to fill space */
+    margin: 0 0 var(--spacing-sm) 0;
     text-align: center;
     font-weight: 700;
-    border-bottom: none; /* Removed internal line for cleaner look */
+    border-bottom: none; 
 }
 
 /* Card Body */
 .card-body {
-    flex-grow: 1;
-    margin-bottom: var(--spacing-md);
+    flex-grow: 0; /* Don't stretch, stay centered */
+    margin-bottom: var(--spacing-sm);
     position: relative;
     z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Inner Content Styles */
 .mini-events-list, .mini-gallery-grid {
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* Increased base font size */
+    width: 100%;
+}
+
+.history-snippet {
+    font-size: 1.05rem; /* Increased for better readability and fill */
+    line-height: 1.4;
+    padding: 0 10px; /* Slight horizontal padding to keep text safe */
 }
 
 .mini-event-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 1.5rem; /* Added horizontal padding to keep text off edges */
     border-bottom: 1px dashed #eee;
+    width: 100%; /* Use full width with padding */
+    box-sizing: border-box; /* Ensure padding doesn't break width */
 }
 
 .event-date {
@@ -153,18 +186,48 @@ body.page-home {
     font-weight: bold;
 }
 
+/* Gallery Image Flow */
 .mini-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 18px; /* Offset the negative overlap to center visual mass */
 }
 
-.mini-gallery-grid img {
-    width: 100%;
-    height: 80px;
+.gallery-thumb-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -18px; /* High overlap for tighter stack */
+    transition: transform 0.3s ease, z-index 0s;
+}
+
+/* Ensure the first one doesn't pull left */
+.gallery-thumb-wrapper:first-child {
+    margin-left: 0;
+}
+
+.gallery-thumb-wrapper img {
+    width: 70px; /* Increased to 70px */
+    height: 70px;
     object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid var(--color-colorado-gold);
+    border-radius: 50%;
+    border: 2px solid var(--color-colorado-gold); /* Gold border as requested */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block;
+    transition: transform 0.2s;
+    background: #fff; /* Prevent transparent overlaps */
+}
+
+/* Hover Effect: Pop out */
+.gallery-thumb-wrapper:hover {
+    transform: translateY(-5px) scale(1.1);
+    z-index: 10; /* Bring to front on hover */
+}
+
+.gallery-thumb-wrapper img:hover {
+    border-color: var(--color-colorado-gold);
 }
 
 /* Corner Decorations (Removed as requested) */
@@ -182,7 +245,7 @@ body.page-home {
     }
     
     .hero-title {
-        font-size: 2.2rem; /* Smaller font for mobile */
+        font-size: 1.8rem; /* Scaled down proportionally */
         word-wrap: break-word; /* Prevent overflow */
         padding: 0 10px;
     }

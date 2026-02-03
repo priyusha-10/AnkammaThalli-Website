@@ -26,6 +26,7 @@
         
         <!-- Card 1: About Us -->
         <article class="divine-card history-card">
+            <div class="watermark">ॐ</div>
             <div class="card-header">
                 <h2>About Us</h2>
             </div>
@@ -39,6 +40,7 @@
 
         <!-- Card 2: Temple Highlights (Gallery) -->
         <article class="divine-card gallery-card">
+            <div class="watermark">ॐ</div>
             <div class="card-header">
                 <h2>Temple Highlights</h2>
             </div>
@@ -46,7 +48,9 @@
                 <?php if (!empty($recentImages)): ?>
                     <div class="mini-gallery-grid">
                         <?php foreach (array_slice($recentImages, 0, 4) as $img): ?>
-                            <img src="<?= htmlspecialchars($img['image_url']) ?>" alt="Gallery Thumb">
+                            <div class="gallery-thumb-wrapper">
+                                <img src="<?= htmlspecialchars($img['image_url']) ?>" alt="Gallery Thumb">
+                            </div>
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
@@ -60,6 +64,7 @@
 
         <!-- Card 3: Upcoming Events -->
         <article class="divine-card events-card">
+            <div class="watermark">ॐ</div>
             <div class="card-header">
                 <h2>Upcoming Events</h2>
             </div>
