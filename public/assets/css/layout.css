@@ -13,6 +13,8 @@
     padding: 8px 0;
     font-size: 0.85rem;
     font-family: var(--font-body);
+    position: relative; /* Ensure it stays on top */
+    z-index: 1002;
 }
 
 .top-bar-content {

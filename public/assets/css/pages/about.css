@@ -1,43 +1,216 @@
-/* public/assets/css/pages/about.css */
-
-.about-header {
-    background-color: var(--color-bg-body);
-    padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid #ddd;
-    margin-bottom: var(--spacing-xl);
+/* Standard White Header Restored */
+body.page-about .site-footer {
+    margin-top: 0; /* Remove gap between carousel and footer */
 }
 
-.about-header h1 {
-    color: var(--color-primary-dark);
+.about-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height */
+    overflow: hidden;
+    background: #000;
+    margin-top: -140px; /* Pull up behind header (TopBar + Header + Margins) */
+    padding-top: 0;
 }
 
-.content-section {
-    margin-bottom: var(--spacing-xl);
-    padding: var(--spacing-lg);
-    background: var(--color-white);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.0s ease-in-out;
+    z-index: 1;
 }
 
-.content-section h2 {
-    color: var(--color-secondary);
-    border-bottom: 2px solid var(--color-accent);
-    display: inline-block;
-    padding-bottom: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
 }
 
-.content-section p {
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%); /* Gradient for better text read */
+    z-index: 1;
+}
+
+.slide-content {
+    position: absolute;
+    top: 55%; /* Move down slightly to clear header */
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 3;
+    color: #fff;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(-40%); }
+    to { opacity: 1; transform: translateY(-50%); }
+}
+
+.slide-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-colorado-gold);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.btn-learn-more {
+    font-family: var(--font-heading);
+    padding: 12px 35px;
     font-size: 1.1rem;
-    color: #555;
+    border: 2px solid var(--color-colorado-gold);
+    background: transparent;
+    color: var(--color-colorado-gold);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-learn-more:hover {
+    background: var(--color-colorado-gold);
+    color: #000;
+    box-shadow: 0 0 15px rgba(252, 170, 0, 0.5);
+}
+
+/* Right Side Indicators */
+.carousel-indicators {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Increased gap */
+}
+
+.indicator {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-right: 40px; /* More space for line */
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.indicator.active {
+    color: var(--color-colorado-gold);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.indicator:hover {
+    color: #fff;
+}
+
+.indicator.active::after {
+    width: 35px; /* Longer line for active */
+    height: 2px;
+    background: var(--color-colorado-gold);
+}
+
+/* Modal Styles */
+.about-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* Above header (1000) */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--color-bg-body);
+    padding: 3rem;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    animation: modalPop 0.4s ease-out;
+    border-top: 5px solid var(--color-rust-red);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+@keyframes modalPop {
+    from {transform: scale(0.9); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #999;
+    font-size: 2.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--color-rust-red);
+}
+
+#modal-body-content h2 {
+    color: var(--color-rust-red);
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+#modal-body-content p {
     line-height: 1.8;
+    color: var(--color-text-main);
+    font-size: 1.05rem;
 }
 
-.values-list {
-    margin-top: var(--spacing-md);
-}
-
-/* Simple markdown-like parsing styling for values */
-.values-content strong {
-    color: var(--color-primary);
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-title { font-size: 2.5rem; }
+    .carousel-indicators { right: 20px; }
+    .slide-content { left: 5%; width: 90%; }
 }

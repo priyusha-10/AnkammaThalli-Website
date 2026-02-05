@@ -21,7 +21,15 @@ $currentPage = $_GET['page'] ?? 'home';
     <link rel="stylesheet" href="assets/css/base.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/layout.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/components.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="assets/css/pages/home.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/components.css?v=<?php echo time(); ?>">
+    
+    <!-- Dynamic Page CSS -->
+    <?php 
+    $pageCss = "assets/css/pages/{$currentPage}.css";
+    if (file_exists($pageCss)) {
+        echo '<link rel="stylesheet" href="' . $pageCss . '?v=' . time() . '">';
+    }
+    ?>
 </head>
 <body class="page-<?= htmlspecialchars($currentPage) ?>">
 
