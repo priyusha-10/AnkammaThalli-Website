@@ -9,7 +9,8 @@ class HomeController {
     public function index() {
         // Fetch Data
         $welcomeMsg = PageSection::getContent('home', 'welcome_msg');
-        $upcomingEvents = Event::getUpcoming(2);
+        $upcomingEvents = Event::getUpcoming(3); // Increased limit
+        $ongoingEvents = Event::getOngoing();
         $recentImages = Gallery::getRecent(4);
 
         // Render View

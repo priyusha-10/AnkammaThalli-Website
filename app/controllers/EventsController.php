@@ -7,7 +7,8 @@ class EventsController {
     public function index() {
         // Fetch categorized events directly from DB Logic
         $ongoingEvents = Event::getOngoing();
-        $upcomingEvents = Event::getUpcoming();
+        $futureEvents = Event::getFuture();
+        $pastEvents = Event::getPastCurrentYear();
 
         // Render View
         require __DIR__ . '/../views/pages/events.php';

@@ -1,0 +1,435 @@
+/* Home Hub Styles - Redesign 3.0 (Alive & Seamless) */
+
+/* 1. The Slider Container */
+.home-carousel {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Taller for immersion */
+    min-height: 600px;
+    overflow: hidden;
+    background: #000;
+    margin: 0;
+    /* Borders removed in favor of seamless dividers */
+}
+
+/* 2. The Slide & Ken Burns Effect */
+/* 2. The Slide & Animations */
+.home-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none; /* Hidden by default */
+    z-index: 0;
+}
+
+.home-slide.active,
+.home-slide.exit {
+    display: block; /* Visible during transition */
+}
+
+.home-slide.active {
+    z-index: 2; /* On Top */
+}
+
+.home-slide.exit {
+    z-index: 1; /* Below */
+}
+
+/* Base BG Style (No Ken Burns) */
+.home-slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Slide Animations --- */
+
+/* Next: Slide In from Right, Out to Left */
+.home-carousel[data-direction="next"] .home-slide.active {
+    animation: slideInRight 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.home-carousel[data-direction="next"] .home-slide.exit {
+    animation: slideOutLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Prev: Slide In from Left, Out to Right */
+.home-carousel[data-direction="prev"] .home-slide.active {
+    animation: slideInLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.home-carousel[data-direction="prev"] .home-slide.exit {
+    animation: slideOutRight 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+}
+
+/* 3. Overlays & Gradients */
+.home-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Vignette + Gradient */
+    background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%),
+                linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+/* 4. Content Styles (Clean Text) */
+.home-slide-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 3;
+    color: #fff;
+    max-width: 700px;
+    padding: 0;
+    
+    /* Glass styles removed */
+    opacity: 1; /* Visible by default, no animation */
+}
+
+/* Animation removed as requested */
+
+/* Mini Gallery Stack */
+.mini-gallery-grid {
+    display: flex;
+    justify-content: flex-start; /* Left align in slider content */
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-left: 10px;
+}
+
+/* Mini Events List */
+.mini-events-list {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 600px; /* Increased slightly for single row */
+}
+
+.mini-event-item {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 202, 50, 0.3);
+}
+
+.mini-event-item:last-child {
+    border-bottom: none;
+}
+
+/* Flex Row Container */
+.event-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.event-name {
+    color: var(--color-colorado-gold);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    
+    /* Single Row Logic */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 15px; /* Space between title and date */
+    flex: 1; /* Take available space */
+}
+
+.event-meta {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    white-space: nowrap; /* Keep date/time on one line */
+    flex-shrink: 0; /* Don't shrink */
+}
+
+.gallery-thumb-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: -20px; /* Overlap */
+    transition: transform 0.3s ease, z-index 0s;
+}
+
+.gallery-thumb-wrapper:first-child {
+    margin-left: 0;
+}
+
+.gallery-thumb-wrapper img {
+    width: 80px; /* Slightly larger than 70px */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--color-colorado-gold);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    display: block;
+    transition: transform 0.2s;
+    background: #000;
+}
+
+.gallery-thumb-wrapper:hover {
+    transform: translateY(-5px) scale(1.1);
+    z-index: 10;
+}
+
+.gallery-thumb-wrapper img:hover {
+    border-color: #fff;
+}
+
+/* Navigation Arrows */
+.home-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--color-colorado-gold);
+    border: 1px solid var(--color-colorado-gold);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.home-nav-arrow:hover {
+    background: var(--color-colorado-gold);
+    color: #000;
+    box-shadow: 0 0 15px rgba(252, 170, 0, 0.6);
+}
+
+.home-nav-arrow.prev {
+    left: 30px;
+}
+
+.home-nav-arrow.next {
+    right: 30px;
+}
+
+.home-slide-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-colorado-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.home-slide-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    border-left: 3px solid var(--color-colorado-gold);
+    padding-left: 15px;
+}
+
+/* Buttons */
+.btn-slide-action {
+    display: inline-block;
+    padding: 12px 40px;
+    background: var(--color-colorado-gold);
+    color: #1a0f00; /* Dark Brown */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+}
+
+.btn-slide-action:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Indicators Removed as per request */
+
+/* 6. Section Dividers (SVG Transition) */
+.shape-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+}
+
+.shape-divider-bottom {
+    bottom: 0;
+}
+
+.shape-divider-top {
+    top: 0;
+}
+
+.shape-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+/* 7. Parallax Donate Section */
+.home-donate-section {
+    position: relative;
+    padding: 8rem 0;
+    background-image: url('../../images/background-images/background-image-4.jpg');
+    background-attachment: fixed; /* Parallax Magic */
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+
+.donate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darken the image */
+    z-index: 1;
+}
+
+.home-donate-content {
+    position: relative;
+    z-index: 2; /* Above overlay */
+    background: rgba(255, 255, 255, 0.05); /* Subtle box */
+    backdrop-filter: blur(5px);
+    padding: 3rem;
+    border: 1px solid rgba(255, 202, 50, 0.2);
+    display: inline-block;
+    max-width: 800px;
+}
+
+.home-donate-content h2 {
+    color: var(--color-colorado-gold);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.home-donate-content p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+/* --- Responsive Mobile Styles --- */
+@media (max-width: 768px) {
+    .home-slide-content {
+        left: 5%;
+        width: 90%;
+        max-width: 100%;
+        padding-right: 5%; /* Ensure no overflow */
+    }
+
+    .home-slide-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    .home-slide-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Adjust Event List for Mobile */
+    .mini-events-list {
+        max-width: 100%;
+    }
+
+    .event-name {
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .event-meta {
+        font-size: 0.85rem;
+    }
+
+    /* Adjust Gallery Thumbs */
+    .gallery-thumb-wrapper img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Compact Arrows */
+    .home-nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .home-nav-arrow.prev {
+        left: 10px;
+    }
+
+    .home-nav-arrow.next {
+        right: 10px;
+    }
+    
+    /* Center align everything on mobile for better balance? 
+       Hero is centered on mobile in home.css, so let's match that. */
+    .home-slide-content {
+        text-align: center;
+        /* Re-center strictly */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .home-slide-description {
+        border-left: none; /* Remove side border */
+        border-bottom: 2px solid var(--color-colorado-gold); /* Add bottom border instead */
+        padding-left: 0;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    .mini-events-list {
+        text-align: left; /* Keep list left aligned internally or it looks weird */
+        align-self: center; /* But center the block itself */
+    }
+    
+    .mini-gallery-grid {
+        justify-content: center; /* Center gallery thumbs */
+        padding-left: 0;
+    }
+}

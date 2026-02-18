@@ -1,237 +1,332 @@
-/* public/assets/css/pages/gallery.css */
+/* assets/css/pages/gallery.css */
 
-/* Header */
+/* 1. Header Styling */
 .gallery-header {
     text-align: center;
-    padding: var(--spacing-xl) 0;
-    margin-bottom: var(--spacing-lg);
-    border-bottom: 2px solid var(--color-colorado-gold);
+    padding: var(--spacing-xl) 0 2rem 0;
+    margin-bottom: 0;
 }
 
 .gallery-header h1 {
     color: var(--color-primary);
     font-size: 3rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 1rem;
 }
 
-/* Albums Grid */
-.albums-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 3rem;
-    padding-bottom: var(--spacing-xl);
-}
-
-/* Category Card Container */
-.category-card {
-    background: var(--color-white);
-    border: 1px solid var(--color-colorado-gold);
-    border-radius: 8px;
-    padding: var(--spacing-sm);
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
-    display: flex;
-    flex-direction: column;
-    animation: fadeInUp 0.6s ease-out backwards;
-    animation-delay: calc(var(--i) * 0.1s); /* Staggered delay */
-}
-
-.category-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(255, 165, 0, 0.2);
-    border-color: var(--color-rust-red);
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Category Header */
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--spacing-xs) var(--spacing-sm);
-    margin-bottom: var(--spacing-xs);
-    border-bottom: 1px solid #eee;
-}
-
-.category-header h3 {
-    color: var(--color-rust-red);
-    font-size: 1.1rem;
-    margin: 0;
-    font-weight: 700;
-}
-
-.photo-count {
-    font-size: 0.85rem;
-    color: #888;
-    background: #f5f5f5;
-    padding: 2px 8px;
-    border-radius: 12px;
-}
-
-/* Mini Grid Preview */
-.category-preview-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 120px); /* Fixed height rows */
-    gap: 4px;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.preview-thumb {
-    background-size: cover;
-    background-position: center;
-    background-color: #f0f0f0;
-    position: relative;
-    transition: opacity 0.3s;
-}
-
-.category-card:hover .preview-thumb {
-    opacity: 0.9;
-}
-
-.preview-thumb.placeholder {
-    background-color: #fafafa;
-    border: 1px dashed #e0e0e0;
-}
-
-/* "More Photos" Overlay */
-.more-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+.gallery-header .lead {
+    color: #666;
     font-size: 1.2rem;
 }
 
-/* Category Modal */
+/* 2. Category Chips - Single Row, No Wrap */
+.category-chips-container {
+    position: relative;
+    max-width: 800px; /* Constrained width */
+    width: 90%; /* Responsive width */
+    margin: 0 auto 3rem auto;
+    padding: 0 20px;
+    display: block;
+    text-align: center;
+}
+
+.category-chips-list {
+    display: inline-flex; /* content-based width */
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 40px 10px 5px; /* Extra padding right for fade */
+    white-space: nowrap;
+    align-items: center;
+    max-width: 100%;
+    
+    /* Scroll visual cues */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;
+    
+    /* Fade Effect on sides */
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 90%, transparent 100%);
+}
+
+.category-chips-list::-webkit-scrollbar {
+    display: none;
+}
+
+.category-chip {
+    padding: 8px 24px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    background: transparent;
+    color: #333;
+    font-family: var(--font-body);
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-size: 0.95rem;
+}
+
+.category-chip:hover {
+    border-color: var(--color-colorado-gold);
+}
+
+.category-chip.active {
+    background: #000; /* Dark Filled */
+    color: #fff;
+    border-color: #000;
+}
+
+/* 3. 3D Carousel Section */
+.gallery-carousel-section {
+    position: relative;
+    padding: 2rem 0 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1000px; /* Essential for 3D */
+    overflow: hidden;
+}
+
+.carousel-3d-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 380px; /* Reduced Height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem; /* Restored margin */
+}
+
+.carousel-item {
+    position: absolute;
+    width: 260px; /* Reduced Width */
+    height: 320px; /* Reduced Height */
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    cursor: pointer;
+    /* Default State: Hidden/Back */
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(0) scale(0.8);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none; /* Let click pass to container */
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 20px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Active Center Item */
+.carousel-item.active {
+    width: 300px; /* Reduced Active Width */
+    height: 380px; /* Reduced Active Height */
+    z-index: 10;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.carousel-item.active .carousel-overlay {
+    opacity: 1;
+}
+
+/* Left Item */
+.carousel-item.prev {
+    transform: translateX(-160px) scale(0.85); /* Adjusted Translate */
+    z-index: 5;
+    opacity: 0.6;
+}
+
+/* Right Item */
+.carousel-item.next {
+    transform: translateX(160px) scale(0.85); /* Adjusted Translate */
+    z-index: 5;
+    opacity: 0.6;
+}
+
+/* Far Left/Right (Hidden or faded more) */
+.carousel-item.prev-2 {
+    transform: translateX(-300px) scale(0.7); /* Adjusted Translate */
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.carousel-item.next-2 {
+    transform: translateX(300px) scale(0.7); /* Adjusted Translate */
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* 4. Navigation Arrows */
+.carousel-nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 1rem;
+}
+
+.carousel-nav {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: transparent;
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-nav:hover {
+    background: #333;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* 5. Modal */
 .gallery-modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
-    z-index: 2000;
+    z-index: 3000;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px);
-    overflow: hidden;
+}
+
+.gallery-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1;
 }
 
 .modal-content {
-    background: #fff;
-    width: 90%;
-    max-width: 1000px;
-    height: 85%;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
     position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    animation: zoomIn 0.3s ease;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+.modal-image-container img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-.modal-header {
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-bottom: 1px solid #eee;
-    background: #fafafa;
-    border-radius: 12px 12px 0 0;
+.modal-caption {
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    font-size: 1.2rem;
 }
 
-.modal-header h2 {
-    margin: 0;
-    color: var(--color-primary);
-    font-size: 1.8rem;
-}
-
-.modal-subtitle {
-    margin: 0;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.close-modal {
+.modal-close {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 3;
     background: none;
     border: none;
-    font-size: 2.5rem;
-    color: #999;
-    cursor: pointer;
     line-height: 1;
-    z-index: 10;
 }
 
-.close-modal:hover {
-    color: var(--color-rust-red);
-}
-
-/* Modal Grid */
-.modal-body-grid {
-    padding: var(--spacing-lg);
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-md);
-}
-
-.modal-img-thumb {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 6px;
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 2rem;
+    background: rgba(255,255,255,0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid #eee;
+    z-index: 3;
+    border: none;
+    transition: background 0.3s;
 }
 
-.modal-img-thumb:hover {
-    transform: scale(1.03);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 2;
+.modal-nav:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.modal-nav.disabled {
+    opacity: 0.2;
+    cursor: default;
+    pointer-events: none;
+}
+
+.modal-nav.prev { left: 40px; }
+.modal-nav.next { right: 40px; }
+
+.modal-counter {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #aaa;
+    z-index: 3;
+    font-size: 1.1rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .albums-grid {
-        gap: 1.5rem;
+    .carousel-3d-container {
+        height: 350px;
     }
     
-    .category-preview-grid {
-        grid-template-rows: repeat(2, 100px);
+    .carousel-item.active {
+        width: 280px;
+        height: 350px;
+    }
+    
+    .carousel-item.prev, .carousel-item.next {
+        transform: translateX(-40px) scale(0.85); /* Less translation on mobile */
+    }
+    .carousel-item.next {
+        transform: translateX(40px) scale(0.85);
+    }
+    
+    .carousel-item.prev-2, .carousel-item.next-2 {
+        opacity: 0; /* Hide 2nd items on mobile */
     }
 
-    .modal-content {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-    }
-
-    .modal-img-thumb {
-        height: 150px;
+    .category-chips-list {
+        overflow-x: auto; /* Allow scroll on mobile */
     }
 }

@@ -203,29 +203,25 @@
     gap: 20px;
 }
 
-.search-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-text-main);
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    border-radius: 50%;
+/* Blog Link (Right) */
+.header-blog-link {
+    color: var(--color-primary); /* #FCAA00 */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
-.search-btn:hover {
-    color: var(--color-primary);
-    background-color: rgba(0,0,0,0.05); /* Subtle background circle on hover */
-    transform: scale(1.1);
-}
-
-/* SVG Size for Search */
-.search-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
+.header-blog-link:hover {
+    color: var(--color-primary-dark);
+    background-color: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.1);
 }
 
 /* Intermediate Desktop (Compact Desktop) */

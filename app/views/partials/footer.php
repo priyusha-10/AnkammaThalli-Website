@@ -57,5 +57,6 @@
 
 <script src="assets/js/main.js?v=<?= time() ?>"></script>
 <script src="assets/js/about.js?v=<?= time() ?>"></script>
+<script src="assets/js/home.js?v=<?= time() ?>"></script>
 </body>
 </html>
